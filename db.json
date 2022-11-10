@@ -2,16 +2,55 @@
   "products": [
     {
       "id": 1,
-      "name": "Product 1",
+      "name": "Dragonspine, Albedo's Heaven",
       "price": 100,
-      "quantity": 1
+      "quantity": 3
     },
     {
       "id": 2,
-      "name": "Product 2",
+      "name": "Mayël l'anima",
       "price": 200,
-      "quantity": 2
+      "quantity": 3
+    },
+    {
+      "id": 3,
+      "name": "Thr Ur-Dragon",
+      "price": 300,
+      "quantity": 3
+    },
+    {
+      "id": 4,
+      "name": "Jodah, the Unifer",
+      "price": 300,
+      "quantity": 3
+    },
+    {
+      "id": 5,
+      "name": "Black Lotus",
+      "price": 20000,
+      "quantity": 1
     }
   ],
-  "users": []
+  "users": [
+    {
+      "id": 1,
+      "name": "Albemo",
+      "email": "albemo.dragonspine@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "SpasfonDelCielo",
+      "email": "spasfon.danslecielo@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "Rorshar",
+      "email": "rorshar.lightyear@gmail.com"
+    },
+    {
+      "id": 4,
+      "name": "Bloster",
+      "email": "bloster.4dimension@gmail.com"
+    }
+  ]
 }

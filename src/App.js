@@ -11,8 +11,8 @@ function App() {
   const [displayForm, setDisplayForm] = useState(true);
   return (
     <>
-      <ProductList />
-      <Cart />
+      {/* <ProductList />
+      <Cart /> */}
       {/* <button onClick={() => setDisplayForm(!displayForm)}>Create a User</button>
       {displayForm && <UserForm />} */}
       <button onClick={() => setDisplayForm(!displayForm)}>Cards Manager</button>

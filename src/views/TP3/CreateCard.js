@@ -1,21 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import ListContainer from "../../components/ListContainer";
 
 
-export default function CreateCard({card = {
-    name: "",
-    CMC: 0,
-    ruletext: "",
-    type: "",
-    attack: 0,
-    life: 0,
-    rarity: "",
-    color: "",
-    price : 0,
-    stock : 0,
-}}
-){
+export default function CreateCard() {
     const [name, setName] = useState("");
     const [CMC, setCMC] = useState(0);
     const [ruletext, setRuletext] = useState("");
@@ -27,9 +14,37 @@ export default function CreateCard({card = {
     const [price, setPrice] = useState(0);
     const [stock, setStock] = useState(0);
 
+    function addCard() {
+        console.log("test");
+        fetch("http://localhost:5000/products", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: name,
+                CMC: CMC,
+                ruletext: ruletext,
+                type: type,
+                attack: attack,
+                life: life,
+                rarity: rarity,
+                color: color,
+                price : price,
+                stock : stock,
+                }),
+        })
+        .then((response) => response.json())
+    }
+
+    function submitForm(event) {
+        event.preventDefault();
+        addCard();
+    }
+
     return (
         <div>
-            <form>
+            <form onSubmit={submitForm}>
                 <label>
                     Name:
                     <input type="text" value={name} onChange={(e) => setName(e.target.value)} />

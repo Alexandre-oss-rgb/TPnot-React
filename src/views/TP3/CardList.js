@@ -8,7 +8,7 @@ import ListContainer from "../../components/ListContainer";
 function cardItem({ item }) {
   return (
     <div>
-      {item.name} - {item.price}€ -
+      {item.name} - {item.price}€ - {item.stock} in stock
     </div>
   );
 }
@@ -24,19 +24,7 @@ export default function Cart() {
         });
     }, []);
 
-    const addCard = (card) => {
-        fetch("http://localhost:5000/products", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(card),
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            setCards([...cards, data]);
-        });
-    };
+
 
     const deleteCard = (id) => {
         fetch(`http://localhost:5000/products/${id}`, {
@@ -72,9 +60,10 @@ export default function Cart() {
     return (
         <>
         <h1>Cards</h1>
-        <CreateCard onSubmit={addCard} />
-        <deleteCard onSubmit={deleteCard} />
-        <updateCard onSubmit={updateCard} />
+        <CreateCard/>
+        {/* <DeleteCard/>
+        <UpdateCard/>
+        <ReadCard/> */}
         <ListContainer
             initialItems={cards}
             ListItem={cardItem}

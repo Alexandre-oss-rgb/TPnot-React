@@ -61,7 +61,7 @@ export default function CreateCard({ cardData, setCardData, getCards, cards }) {
     { check ? <h1>Modifier une carte</h1> : <h1>Ajouter une carte</h1> }
       <form onSubmit={submitForm}>
         <label>
-          Name:
+          Name : 
           <input
             type="text"
             value={cardData.name}
@@ -70,7 +70,7 @@ export default function CreateCard({ cardData, setCardData, getCards, cards }) {
           <br />
         </label>
         <label>
-          CMC:
+          CMC : 
           <input
             type="number"
             value={cardData.CMC}
@@ -79,7 +79,7 @@ export default function CreateCard({ cardData, setCardData, getCards, cards }) {
           <br />
         </label>
         <label>
-          Ruletext:
+          Ruletext : 
           <input
             type="text"
             value={cardData.ruletext}
@@ -90,7 +90,7 @@ export default function CreateCard({ cardData, setCardData, getCards, cards }) {
           <br />
         </label>
         <label>
-          Type:
+          Type : 
           <input
             type="text"
             value={cardData.type}
@@ -99,7 +99,7 @@ export default function CreateCard({ cardData, setCardData, getCards, cards }) {
           <br />
         </label>
         <label>
-          Attack:
+          Attack : 
           <input
             type="number"
             value={cardData.attack}
@@ -110,7 +110,7 @@ export default function CreateCard({ cardData, setCardData, getCards, cards }) {
           <br />
         </label>
         <label>
-          Life:
+          Life : 
           <input
             type="number"
             value={cardData.defense}
@@ -121,7 +121,7 @@ export default function CreateCard({ cardData, setCardData, getCards, cards }) {
           <br />
         </label>
         <label>
-          Rarity:
+          Rarity : 
           <input
             type="text"
             value={cardData.rarity}
@@ -132,7 +132,7 @@ export default function CreateCard({ cardData, setCardData, getCards, cards }) {
           <br />
         </label>
         <label>
-          Color:
+          Color : 
           <input
             type="text"
             value={cardData.color}
@@ -143,7 +143,7 @@ export default function CreateCard({ cardData, setCardData, getCards, cards }) {
           <br />
         </label>
         <label>
-          Price:
+          Price : 
           <input
             type="number"
             value={cardData.price}
@@ -154,7 +154,7 @@ export default function CreateCard({ cardData, setCardData, getCards, cards }) {
           <br />
         </label>
         <label>
-          Stock:
+          Stock : 
           <input
             type="number"
             value={cardData.stock}

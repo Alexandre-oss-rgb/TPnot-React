@@ -10,16 +10,17 @@ export default function CardList({ cards, setCards, getCards }) {
       <h1>Liste des cartes</h1>
       {cards.map((card) => (
         <div className="displayRead" key={card.id}>
-          <p>{card.name};</p>
-          <p>{card.CMC};</p>
-          <p>{card.ruletext};</p>
-          <p>{card.type};</p>
-          <p>{card.attack};</p>
-          <p>{card.defense};</p>
-          <p>{card.rarity};</p>
-          <p>{card.color};</p>
-          <p>{card.price};</p>
-          <p>{card.stock};</p>
+          <p>Nom : {card.name} - </p>
+          <p>Coût en mana : {card.CMC} - </p>
+          <p>Ruletext : {card.ruletext} - </p>
+          <p>Type : {card.type} - </p>
+          <p>Attack : {card.attack} - </p>
+          <p>Défense : {card.defense} - </p>
+          <p>Rareté : {card.rarity} - </p>
+          <p>Couleur : {card.color} - </p>
+          <p>Prix : {card.price} - </p>
+          <p>En stock : {card.stock} - </p>
+          <p>Id : {card.id}</p>
         </div>
       ))}
     </>

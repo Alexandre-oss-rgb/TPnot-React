@@ -5,9 +5,42 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color:  #001f3f;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+body h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  color: #0074D9
+}
+
+body button {
+  background-color: #0074D9;
+  color: #282c34;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 10px;
+  cursor: pointer;
+}
+
+body button:hover {
+  background-color: #7FDBFF;
+  color: #0074D9;
+}
+
+body label {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 10px;
+  color: #39CCCC;
 }

@@ -1,105 +1,183 @@
-import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
+export default function CreateCard({ cardData, setCardData, getCards, cards }) {
 
-export default function CreateCard() {
-    const [name, setName] = useState("");
-    const [CMC, setCMC] = useState(0);
-    const [ruletext, setRuletext] = useState("");
-    const [type, setType] = useState("");
-    const [attack, setAttack] = useState(0);
-    const [life, setLife] = useState(0);
-    const [rarity, setRarity] = useState("");
-    const [color, setColor] = useState("");
-    const [price, setPrice] = useState(0);
-    const [stock, setStock] = useState(0);
+  const [id, setId] = useState(0);
 
-    function addCard() {
-        console.log("test");
-        fetch("http://localhost:5000/products", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name: name,
-                CMC: CMC,
-                ruletext: ruletext,
-                type: type,
-                attack: attack,
-                life: life,
-                rarity: rarity,
-                color: color,
-                price : price,
-                stock : stock,
-                }),
-        })
-        .then((response) => response.json())
+  const [check, setCheck] = useState(false);
+
+  //ajouter une carte
+  async function addCard() {
+    await fetch("http://localhost:5000/products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...cardData }),
+    }).then((response) => response.json());
+    getCards();
+  }
+
+  //check si l'utilisateur veut ajouter ou modifier une carte
+  function submitForm(event) {
+    event.preventDefault();
+    if (!check) {
+      addCard();
+    } else {
+      editCard();
     }
+  }
 
-    function submitForm(event) {
-        event.preventDefault();
-        addCard();
+  //modifier une carte    
+  async function getCardtoEdit() {
+    await fetch("http://localhost:5000/products/" + id)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setCardData(data);
+      });
+  }
+
+  async function editCard() {
+    await fetch("http://localhost:5000/products/" + id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...cardData }),
+    }).then((response) => response.json());
+    getCards();
+  }
+
+  useEffect(() => {
+    if (id !== 0) {
+      getCardtoEdit();
+      setCheck(true);
     }
+  }, [id]);
 
-    return (
-        <div>
-            <form onSubmit={submitForm}>
-                <label>
-                    Name:
-                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-                    <br />
-                </label>
-                <label>
-                    CMC:
-                    <input type="number" value={CMC} onChange={(e) => setCMC(e.target.value)} />
-                    <br />
-                </label>
-                <label>
-                    Ruletext:
-                    <input type="text" value={ruletext} onChange={(e) => setRuletext(e.target.value)} />
-                    <br />
-                </label>
-                <label>
-                    Type:
-                    <input type="text" value={type} onChange={(e) => setType(e.target.value)} />
-                    <br />
-                </label>
-                <label>
-                    Attack:
-                    <input type="number" value={attack} onChange={(e) => setAttack(e.target.value)} />
-                    <br />
-                </label>
-                <label>
-                    Life:
-                    <input type="number" value={life} onChange={(e) => setLife(e.target.value)} />
-                    <br />
-                </label>
-                <label>
-                    Rarity:
-                    <input type="text" value={rarity} onChange={(e) => setRarity(e.target.value)} />
-                    <br />
-                </label>
-                <label>
-                    Color:
-                    <input type="text" value={color} onChange={(e) => setColor(e.target.value)} />
-                    <br />
-                </label>
-                <label>
-                    Price:
-                    <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} />
-                    <br />
-                </label>
-                <label>
-                    Stock:
-                    <input type="number" value={stock} onChange={(e) => setStock(e.target.value)} />
-                    <br />
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
-        </div>
-    );
+  return (
+    <div>
+    { check ? <h1>Modifier une carte</h1> : <h1>Ajouter une carte</h1> }
+      <form onSubmit={submitForm}>
+        <label>
+          Name:
+          <input
+            type="text"
+            value={cardData.name}
+            onChange={(e) => setCardData({ ...cardData, name: e.target.value })}
+          />
+          <br />
+        </label>
+        <label>
+          CMC:
+          <input
+            type="number"
+            value={cardData.CMC}
+            onChange={(e) => setCardData({ ...cardData, CMC: e.target.value })}
+          />
+          <br />
+        </label>
+        <label>
+          Ruletext:
+          <input
+            type="text"
+            value={cardData.ruletext}
+            onChange={(e) =>
+              setCardData({ ...cardData, ruletext: e.target.value })
+            }
+          />
+          <br />
+        </label>
+        <label>
+          Type:
+          <input
+            type="text"
+            value={cardData.type}
+            onChange={(e) => setCardData({ ...cardData, type: e.target.value })}
+          />
+          <br />
+        </label>
+        <label>
+          Attack:
+          <input
+            type="number"
+            value={cardData.attack}
+            onChange={(e) =>
+              setCardData({ ...cardData, attack: e.target.value })
+            }
+          />
+          <br />
+        </label>
+        <label>
+          Life:
+          <input
+            type="number"
+            value={cardData.defense}
+            onChange={(e) =>
+              setCardData({ ...cardData, defense: e.target.value })
+            }
+          />
+          <br />
+        </label>
+        <label>
+          Rarity:
+          <input
+            type="text"
+            value={cardData.rarity}
+            onChange={(e) =>
+              setCardData({ ...cardData, rarity: e.target.value })
+            }
+          />
+          <br />
+        </label>
+        <label>
+          Color:
+          <input
+            type="text"
+            value={cardData.color}
+            onChange={(e) =>
+              setCardData({ ...cardData, color: e.target.value })
+            }
+          />
+          <br />
+        </label>
+        <label>
+          Price:
+          <input
+            type="number"
+            value={cardData.price}
+            onChange={(e) =>
+              setCardData({ ...cardData, price: e.target.value })
+            }
+          />
+          <br />
+        </label>
+        <label>
+          Stock:
+          <input
+            type="number"
+            value={cardData.stock}
+            onChange={(e) =>
+              setCardData({ ...cardData, stock: e.target.value })
+            }
+          />
+          <br />
+        </label>
+        <input type="submit" value={check ? "Modifier" : "Ajouter"}  />
+      </form>
+      <br />
+      <form>
+        <label>
+          Veuillez entrer l'id de la carte à modifier :
+          <input
+            type="number"
+            value={id}
+            onChange={(e) => setId(e.target.value)}
+          />
+          <br />
+        </label>
+      </form>
+    </div>
+  );
 }
-
-
-

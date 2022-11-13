@@ -1,47 +1,17 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Dragonspine, Albedo's Heaven",
-      "price": 100,
-      "quantity": 3
-    },
-    {
-      "id": 2,
-      "name": "Mayël l'anima",
-      "price": 200,
-      "quantity": 3
-    },
-    {
-      "id": 3,
-      "name": "Thr Ur-Dragon",
-      "price": 300,
-      "quantity": 3
-    },
-    {
-      "id": 4,
-      "name": "Jodah, the Unifer",
-      "price": 300,
-      "quantity": 3
-    },
-    {
-      "id": 5,
-      "name": "Black Lotus",
-      "price": 20000,
-      "quantity": 1
-    },
-    {
-      "name": "qsdqsdq",
-      "CMC": "3",
-      "ruletext": "qsdqsd",
-      "type": "wfsfqs",
-      "attack": "3",
-      "life": "3",
-      "rarity": "qsds",
-      "color": "xcwxcqs",
-      "price": "2",
-      "stock": "1",
-      "id": 6
+      "name": "Greensleeves",
+      "CMC": "5",
+      "ruletext": "Whenever...",
+      "type": "Sorcerer",
+      "attack": "5",
+      "defense": "5",
+      "rarity": "Mythic rare",
+      "color": "Green",
+      "price": "15",
+      "stock": "7",
+      "id": 1
     }
   ],
   "users": [
